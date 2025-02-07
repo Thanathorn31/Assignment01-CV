@@ -956,27 +956,57 @@ body{
     position: relative;
 }
 
+/* ปรับตำแหน่งปุ่ม Prev & Next */
+.carousel-control-prev {
+    left: 10px; /* ชิดขอบซ้าย */
+}
+
+.carousel-control-next {
+    right: 10px; /* ชิดขอบขวา */
+}
+
+/* ปรับสีปุ่มให้เป็นสีดำ */
 .carousel-control {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 1); /* สีดำสนิท */
     color: #fff;
     border: none;
-    padding: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     cursor: pointer;
     font-size: 24px;
-    border-radius: 50%;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.carousel-control.prev {
-    left: 10px;
+/* เปลี่ยนสีปุ่มเมื่อ Hover */
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.8); /* สีดำเข้มขึ้น */
+    transform: translateY(-50%) scale(1.1); /* ขยายเล็กน้อยเมื่อ Hover */
 }
 
-.carousel-control.next {
-    right: 10px;
+/* ทำให้ไอคอนภายในปุ่มเป็นสีขาว */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* เปลี่ยนสีเป็นขาว */
 }
+
+/* ปรับตำแหน่งปุ่มสำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+    .carousel-control-prev {
+        left: 5px;
+    }
+
+    .carousel-control-next {
+        right: 5px;
+    }
+}
+
 .carousel-item img {
     width: 100%;
     display: block;
@@ -1161,7 +1191,3 @@ img {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
-
-
-
-

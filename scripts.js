@@ -8,17 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-    const image = document.querySelector(".home__img img");
-
-    setTimeout(() => {
-        image.classList.add("animated");
-    }, 500); // เริ่มแสดงผลหลังจาก 0.5 วินาที
-});
-
-// edu
-// สร้าง observer สำหรับติดตามการเลื่อนของ timeline-item
+// education สร้าง observer สำหรับติดตามการเลื่อนของ timeline-item
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -31,16 +21,12 @@ const observer = new IntersectionObserver((entries, observer) => {
     });
 }, { threshold: 0.5 }); // กำหนดว่าเมื่อ item 50% ปรากฏใน viewport ให้ทำงาน
 
-// เลือกทุกๆ .timeline-item และเริ่มสังเกตการณ์
+
 document.querySelectorAll('.timeline-item').forEach(item => {
     observer.observe(item);
 });
 
-
-
-// Skill
-// Add scroll animation
-
+// Skill add scroll animation
 document.querySelectorAll('.skill-item').forEach(item => {
     item.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-5px)';
@@ -51,12 +37,6 @@ document.querySelectorAll('.skill-item').forEach(item => {
     });
 });
 
-
-// adding funtionality to back to top button 
-// Get the button element
-const backToTopButton = document.getElementById('btn-back-to-top');
-
-// When the user scrolls down 100px from the top of the document, show the button
 window.onscroll = function () {
   if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
     backToTopButton.style.display = 'block';
@@ -110,6 +90,7 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
     document.getElementById('contact-form').reset();
 });
 
+// carousel
 const carouselInner = document.querySelector('.carousel-inner');
 const carouselItems = document.querySelectorAll('.carousel-item');
 const prevButton = document.querySelector('.carousel-control.prev');
@@ -130,22 +111,3 @@ nextButton.addEventListener('click', () => {
     currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
     showSlide(currentIndex);
 });
-
-
-  // แสดงปุ่ม Back to Top เมื่อเลื่อนลง
-  window.addEventListener("scroll", function() {
-    var backToTop = document.getElementById("backToTop");
-    if (window.scrollY > 300) {
-      backToTop.style.display = "flex";
-    } else {
-      backToTop.style.display = "none";
-    }
-  });
-
-  // คลิกปุ่มแล้วเลื่อนขึ้นไปบนสุดอย่างนุ่มนวล
-  document.getElementById("backToTop").addEventListener("click", function() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
